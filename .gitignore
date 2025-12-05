@@ -1,0 +1,298 @@
+## .NET / Visual Studio / VS Code
+## Base from `dotnet new gitignore` with repo-specific adds
+## --------------------------------------------------------------------
+
+# dotenv
+.env
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs      # MonoDevelop/Xamarin
+
+# Mono crash logs
+mono_crash.*
+
+# Build results & logs
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+TestResults/
+reports/
+
+# Visual Studio
+.vs/
+Generated Files/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# C/C++/VC toolchain byproducts
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Profilers / traces
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.e2e
+
+# TFS Local Workspace
+$tf/
+
+# ReSharper / JetBrains Rider
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+.idea/
+*.sln.iml
+
+# Coverage / testing tools
+.axoCover/*
+!.axoCover/settings.json
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# Other VS add-ins / tools
+_Chutzpah*
+.sass-cache/
+[Ee]xpress/              # InstallShield
+publish/                 # ClickOnce output
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+PublishScripts/
+StyleCopReport.xml
+BenchmarkDotNet.Artifacts/
+ScaffoldingReadMe.txt
+.tye/
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# NuGet packages folder (except build/)
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# Azure
+csx/
+*.build.csdef
+ecf/
+rcf/
+
+# Windows App packages
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Keep files ending with .cache ignored, but not directories
+*.[Cc]ache
+!?*.[Cc]ache/
+
+# Misc / legacy
+ClientBin/
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+Generated_Code/
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+
+# Databases / BI
+*.mdf
+*.ldf
+*.ndf
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+*- [Bb]ackup.rdl
+*- [Bb]ackup ([0-9]).rdl
+*- [Bb]ackup ([0-9][0-9]).rdl
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# Node / Python / Paket / FAKE
+node_modules/
+__pycache__/
+*.pyc
+.paket/paket.exe
+paket-files/
+.fake/
+
+# Misc tools
+.cr/personal          # CodeRush
+*.tss                 # Tabs Studio
+*.jmconfig            # JustMock
+OpenCover/            # OpenCover UI
+ASALocalRun/          # Azure Stream Analytics
+*.binlog              # MSBuild structured log
+*.nvuser              # Nsight
+.mfractor/            # MFractors
+.localhistory/
+.vshistory/
+healthchecksdb
+MigrationBackup/
+.ionide/
+FodyWeavers.xsd
+
+# VS Code (curated tracking)
+# Track the JSONs that affect project behavior; ignore volatile caches
+!.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.vscode/workspaceStorage/
+.vscode/globalStorage/
+.vscode/ipch/
+.vscode/.history/
+.vscode/*.db
+.vscode/*.lock
+.vscode/*.tsbuildinfo
+*.code-workspace
+
+# Windows installers (once)
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Global OS ignores (Windows & macOS)
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*.dmg
+#*.app
+
+# Repo-specific local/editor sidecars
+.frontmatter/
+.snapshots/
+.config/
+
+# One-off bundles & local logs
+tools.zip
+tools/bootstrap/logs/
+
+# Tooling (if truly local-only; adjust if you want parts tracked)
+**/tooling/*
+**/powersh_scripts/
+
+# --------------------------------------------------------------------
+# Allow-list: keep project-affecting config tracked
+# (Negations must come after ignore rules)
+# --------------------------------------------------------------------
+!global.json
+!Directory.Build.props
+!Directory.Build.targets
+!**/*.sln
+!**/*.csproj
+!**/*.props
+!**/*.targets
+!**/Properties/launchSettings.json
+!.editorconfig
+!frontmatter.json
+!.devcontainer/**
+
+# speciffic files.
+gitsaine.sh
