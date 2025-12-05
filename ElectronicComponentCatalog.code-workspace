@@ -19,9 +19,6 @@
 	],
 	"settings": {
 		"dotnet.defaultSolution": "ElectronicComponentCatalog.sln",
-		"files.exclude": {
-			"**/bin": true,
-			"**/obj": true
-		}
+		
 	}
 }
