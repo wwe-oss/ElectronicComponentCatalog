@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "src/ElectronicComponentCatalog.App"
+		},
+		{
+			"path": "src/ElectronicComponentCatalog.Domain"
+		},
+		{
+			"path": "src/ElectronicComponentCatalog.Infrastructure"
+		},
+		{
+			"path": "tests/ElectronicComponentCatalog.Tests"
+		},
+		{
+			"name": "ECC Workspace",
+			"path": "."
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "ElectronicComponentCatalog.sln",
+		"files.exclude": {
+			"**/bin": true,
+			"**/obj": true
+		}
+	}
+}

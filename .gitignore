@@ -226,7 +226,7 @@ FodyWeavers.xsd
 .vscode/*.db
 .vscode/*.lock
 .vscode/*.tsbuildinfo
-*.code-workspace
+#*.code-workspace
 
 # Windows installers (once)
 *.cab
