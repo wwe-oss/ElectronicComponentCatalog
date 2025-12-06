@@ -1,4 +1,6 @@
-﻿namespace ElectronicComponentCatalog.App;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace ElectronicComponentCatalog.App;
 
 public partial class App : Application
 {
