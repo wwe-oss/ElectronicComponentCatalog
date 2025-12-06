@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Microsoft.Extensions.Configuration;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Services
@@ -26,6 +28,42 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructur
             var dir = Path.GetDirectoryName(path: fullPath);
             if (!Directory.Exists(path: dir)) Directory.CreateDirectory(path: dir!);
             return $"Data Source={fullPath}";
+        }
+
+        public async Task<string> SaveDatabasePathAsync(string databasePath)
+        {
+            if (string.IsNullOrWhiteSpace(databasePath))
+            {
+                throw new ArgumentException("Database path cannot be empty.", nameof(databasePath));
+            }
+
+            var normalizedPath = Path.GetFullPath(databasePath.Trim());
+            var directory = Path.GetDirectoryName(normalizedPath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(path: directory))
+            {
+                Directory.CreateDirectory(path: directory);
+            }
+
+            var configDirectory = Path.GetDirectoryName(path: AppContext.BaseDirectory);
+            if (!string.IsNullOrEmpty(configDirectory))
+            {
+                Directory.CreateDirectory(path: configDirectory);
+            }
+
+            var configFilePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+            var rawJson = File.Exists(configFilePath)
+                ? await File.ReadAllTextAsync(configFilePath)
+                : "{}";
+            var root = JsonNode.Parse(string.IsNullOrWhiteSpace(rawJson) ? "{}" : rawJson) as JsonObject ?? new JsonObject();
+            var databaseNode = root["Database"] as JsonObject ?? new JsonObject();
+
+            databaseNode["Path"] = normalizedPath;
+            databaseNode["ConnectionString"] = $"Data Source={normalizedPath}";
+            root["Database"] = databaseNode;
+
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            await File.WriteAllTextAsync(configFilePath, root.ToJsonString(options));
+            return normalizedPath;
         }
     }
 }
