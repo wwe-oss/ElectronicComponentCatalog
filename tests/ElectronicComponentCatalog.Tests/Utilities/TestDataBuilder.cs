@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Entities;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.ValueObjects;
 
@@ -10,45 +11,49 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Utiliti
     /// </summary>
     public static class TestDataBuilder
     {
-        public static List<Category> GetCategories() => new()
+        private static readonly (string Name, string Description)[] CategoryDefinitions =
         {
-            new Category { Id = 1, Name = "Resistors", Description = "Fixed and variable resistors" },
-            new Category { Id = 2, Name = "Capacitors", Description = "Electrolytic, ceramic, film" },
-            new Category { Id = 3, Name = "Switches", Description = "Toggle, push button, rotary" }
+            ("Resistors", "Fixed and variable resistors"),
+            ("Capacitors", "Electrolytic, ceramic, film"),
+            ("Switches", "Toggle, push button, rotary")
         };
 
-        public static List<Component> GetComponents()
+        public static List<Category> GetCategories() => CreateCategories();
+
+        public static List<Component> GetComponents(IEnumerable<Category>? categories = null)
         {
+            var resolvedCategories = categories?.ToList() ?? CreateCategories();
+            var resistorCategory = resolvedCategories.First(c => c.Name == "Resistors");
+            var capacitorCategory = resolvedCategories.First(c => c.Name == "Capacitors");
+
             var resistorSpec = new ComponentSpecification("10k", "Ohm");
             var capacitorSpec = new ComponentSpecification("100nF", "F");
 
-            return new()
+            return new List<Component>
             {
-                new Component
-                {
-                    Id = 1,
-                    Name = "Resistor 10k",
-                    CommonName = "R10K",
-                    Specification = resistorSpec,
-                    CategoryId = 1,
-                    QuantityOnHand = 50
-                },
-                new Component
-                {
-                    Id = 2,
-                    Name = "Capacitor 100nF",
-                    CommonName = "C100nF",
-                    Specification = capacitorSpec,
-                    CategoryId = 2,
-                    QuantityOnHand = 75
-                }
+                new Component("Resistor 10k", "R10K", resistorCategory, resistorSpec, quantityOnHand: 50),
+                new Component("Capacitor 100nF", "C100nF", capacitorCategory, capacitorSpec, quantityOnHand: 75)
             };
         }
 
-        public static List<InventoryRecord> GetInventoryRecords() => new()
+        public static List<InventoryRecord> GetInventoryRecords(IEnumerable<Component>? components = null)
         {
-            new InventoryRecord { Id = 1, ComponentId = 1, Count = 50, LastUpdated = DateTime.UtcNow },
-            new InventoryRecord { Id = 2, ComponentId = 2, Count = 75, LastUpdated = DateTime.UtcNow }
-        };
+            var resolvedComponents = components?.ToList() ?? GetComponents();
+            if (resolvedComponents.Count < 2)
+                resolvedComponents.AddRange(GetComponents());
+
+            var first = resolvedComponents[0];
+            var second = resolvedComponents[1];
+
+            return new List<InventoryRecord>
+            {
+                new InventoryRecord(first.Id, first.QuantityOnHand),
+                new InventoryRecord(second.Id, second.QuantityOnHand)
+            };
+        }
+
+        private static List<Category> CreateCategories() => CategoryDefinitions
+            .Select(def => new Category(def.Name, def.Description))
+            .ToList();
     }
 }

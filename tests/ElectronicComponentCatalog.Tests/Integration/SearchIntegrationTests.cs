@@ -25,8 +25,9 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Integra
         public async Task Search_By_Category_Should_Filter_Correctly()
         {
             using var context = MockDbContextFactory.CreateInMemoryContext();
-            await context.Categories.AddRangeAsync(TestDataBuilder.GetCategories());
-            await context.Components.AddRangeAsync(TestDataBuilder.GetComponents());
+            var categories = TestDataBuilder.GetCategories();
+            await context.Categories.AddRangeAsync(categories);
+            await context.Components.AddRangeAsync(TestDataBuilder.GetComponents(categories));
             await context.SaveChangesAsync();
 
             var catId = context.Categories.First(c => c.Name == "Resistors").Id;

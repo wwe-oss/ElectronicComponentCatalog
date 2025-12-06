@@ -32,8 +32,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Infrast
             try
             {
                 var category = new Category(name: "Capacitors", description: "Electrolytics");
-                var spec = new ComponentSpecification(value: 10, unit: "uF");
-                var comp = new Component(name: "10uF Capacitor", commonName: "Capacitor", category: category, specification: spec, 25);
+                var spec = new ComponentSpecification(value: "10", unit: "uF");
+                var comp = new Component(name: "10uF Capacitor", commonName: "Capacitor", category: category, specification: spec, quantityOnHand: 25);
 
                 await _repo.AddAsync(comp);
                 await _context.SaveChangesAsync();
@@ -58,8 +58,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Infrast
             try
             {
                 var category = new Category(name: "Resistors", description: "Carbon Film");
-                var spec = new ComponentSpecification(value: 100, "Ohm");
-                var comp = new Component(name: "100 Ohm Resistor", commonName: "Resistor", category: category, spec, 50);
+                var spec = new ComponentSpecification(value: "100", unit: "Ohm");
+                var comp = new Component(name: "100 Ohm Resistor", commonName: "Resistor", category: category, specification: spec, quantityOnHand: 50);
                 await _repo.AddAsync(entity: comp);
                 await _context.SaveChangesAsync();
 

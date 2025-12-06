@@ -12,12 +12,9 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Domain
         [Fact]
         public void Component_Should_Throw_When_Name_Is_Null()
         {
-            Action act = () => new Component
-            {
-                Name = null!,
-                Specification = new ComponentSpecification(value: "10k", unit: "Ohm"),
-                QuantityOnHand = 5
-            };
+            var category = new Category("Resistors", "Fixed resistors");
+            var spec = new ComponentSpecification(value: "10k", unit: "Ohm");
+            Action act = () => new Component(name: null!, commonName: "R", category: category, specification: spec, quantityOnHand: 5);
 
             act.Should().Throw<ValidationException>()
                .WithMessage("*Name*");
@@ -34,7 +31,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Domain
         [Fact]
         public void InventoryRecord_Should_Have_Valid_Defaults()
         {
-            var record = new InventoryRecord { ComponentId = 1, Count = 10 };
+            var record = new InventoryRecord(componentId: Guid.NewGuid(), count: 10);
             record.LastUpdated.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(3));
         }
     }
