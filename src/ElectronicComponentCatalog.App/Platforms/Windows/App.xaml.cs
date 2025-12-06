@@ -1,4 +1,4 @@
-﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App;
 using Microsoft.Maui;
 using Microsoft.UI.Xaml;
 

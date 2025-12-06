@@ -1,0 +1,15 @@
+# Always normalize text files (use LF in repo)
+* text=auto eol=lf
+
+# Windows-specific files (retain CRLF)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Keep LF for everything else
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.cs text eol=lf
+*.xaml text eol=lf

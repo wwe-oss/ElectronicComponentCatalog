@@ -1,4 +1,4 @@
-﻿﻿﻿﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
+﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
