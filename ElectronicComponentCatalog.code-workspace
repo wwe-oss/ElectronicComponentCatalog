@@ -19,6 +19,7 @@
 	],
 	"settings": {
 		"dotnet.defaultSolution": "ElectronicComponentCatalog.sln",
+		"powershell.cwd": "ECC Workspace",
 		
 	}
 }
