@@ -1,4 +1,4 @@
-﻿﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
+﻿﻿﻿﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
@@ -20,10 +20,11 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App
             _services = services ?? throw new ArgumentNullException(nameof(services));
         }
 
-        protected override Window CreateWindow(IActivationState activationState)
+        protected override Window CreateWindow(IActivationState? activationState)
         {
+            ArgumentNullException.ThrowIfNull(activationState);
             var mainPage = _services.GetRequiredService<MainPage>();
-            return new Window(mainPage);
+            return new Window(page: mainPage);
         }
     }
 }

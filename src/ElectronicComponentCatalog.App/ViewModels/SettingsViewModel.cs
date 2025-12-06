@@ -11,7 +11,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
     {
         private readonly ConfigurationService _config;
 
-        [ObservableProperty] private string _databasePath = string.Empty;
+        [ObservableProperty]
+        public partial string DatabasePath { get; set; } = string.Empty;
 
         public SettingsViewModel(ConfigurationService config)
         {
