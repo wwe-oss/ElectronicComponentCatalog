@@ -1,29 +1,18 @@
 <Project>
     <!-- Post-build: copy runtime assets -->
-    <Target Name="CopyRuntimeAssets"
-            AfterTargets="Build">
-        <Message Text="Copying runtime assets to output..."
-                 Importance="high"/>
+    <Target Name="CopyRuntimeAssets" AfterTargets="Build">
+        <Message Text="Copying runtime assets to output..." Importance="high"/>
         <!-- Copy App Configurations -->
-        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\appsettings.json"
-              DestinationFolder="$(OutputPath)"
-              SkipUnchangedFiles="true"/>
-        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\themesettings.json"
-              DestinationFolder="$(OutputPath)"
-              SkipUnchangedFiles="true"/>
+        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\appsettings.json" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true"/>
+        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\themesettings.json" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true"/>
         <!-- Copy SQLite Database -->
         <ItemGroup>
             <_Database Include="Data\Database\catalog.db"/>
         </ItemGroup>
-        <Copy SourceFiles="@(_Database)"
-              DestinationFolder="$(OutputPath)"
-              SkipUnchangedFiles="true"
-              Condition="Exists('%(FullPath)')"/>
+        <Copy SourceFiles="@(_Database)" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')"/>
     </Target>
     <!-- Optional: enforce editorconfig compliance -->
-    <Target Name="EnforceCodeStyle"
-            BeforeTargets="Build">
-        <Message Text="Applying .editorconfig rules..."
-                 Importance="low"/>
+    <Target Name="EnforceCodeStyle" BeforeTargets="Build">
+        <Message Text="Applying .editorconfig rules..." Importance="low"/>
     </Target>
 </Project>  

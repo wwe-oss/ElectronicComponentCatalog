@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls;
+﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App;
+
+using Microsoft.Maui.Controls;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App
 {
