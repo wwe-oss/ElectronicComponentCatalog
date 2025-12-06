@@ -15,4 +15,19 @@
     <Target Name="EnforceCodeStyle" BeforeTargets="Build">
         <Message Text="Applying .editorconfig rules..." Importance="low"/>
     </Target>
+    <!-- Make sure MSBuild always runs restore -->
+    <Target Name="EnsureRestore"  BeforeTargets="Build">
+        <MSBuild Projects="$(MSBuildProjectFile)" Targets="Restore"/>
+    </Target>
+    <Target Name="CopyAppConfig" AfterTargets="Build">
+        <ItemGroup>
+            <!-- <_AppConfigFiles Include="src\ElectronicComponentCatalog.App\Configuration\appsettings*.json"
+                            Condition="Exists('%(FullPath)')"/> -->
+            <_AppConfigFiles Include="Configuration\appsettings*.json" />
+        </ItemGroup>
+        <Copy SourceFiles="@(_AppConfigFiles)"
+            DestinationFolder="$(OutputPath)"
+            SkipUnchangedFiles="true"
+            Condition="@( _AppConfigFiles ) != ''"/>
+    </Target>      
 </Project>  

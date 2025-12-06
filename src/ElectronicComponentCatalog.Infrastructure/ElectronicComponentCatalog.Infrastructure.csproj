@@ -14,4 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ElectronicComponentCatalog.Domain\ElectronicComponentCatalog.Domain.csproj" />
   </ItemGroup>
+  <!-- <ItemGroup>
+    <ProjectReference Include="..\ElectronicComponentCatalog.Domain\ElectronicComponentCatalog.Domain.csproj" />
+  </ItemGroup> -->
 </Project>

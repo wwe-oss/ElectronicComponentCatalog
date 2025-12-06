@@ -13,8 +13,8 @@
         <Authors>Wayne</Authors>
         <RepositoryUrl>https://github.com/YourRepoHere/ElectronicComponentCatalog</RepositoryUrl>
         <!-- Build Directories -->
-        <BaseOutputPath>$(MSBuildThisFileDirectory)build\bin\</BaseOutputPath>
-        <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)build\obj\</BaseIntermediateOutputPath>
+        <BaseOutputPath>$(MSBuildThisFileDirectory)build\$(MSBuildProjectName)\bin\</BaseOutputPath>
+        <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)build\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
         <!-- Diagnostics -->
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <AnalysisLevel>latest</AnalysisLevel>
