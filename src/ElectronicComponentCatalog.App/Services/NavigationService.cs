@@ -13,7 +13,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services
     {
         private readonly IServiceProvider _provider;
         private ContentView? _contentRegion;
-        private readonly Dictionary<string, Func<Page>> _routes;
+        private readonly Dictionary<string, Func<ContentPage>> _routes;
 
         public NavigationService(IServiceProvider provider)
         {
