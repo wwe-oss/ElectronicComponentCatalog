@@ -44,13 +44,12 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructur
                 Directory.CreateDirectory(path: directory);
             }
 
-            var configDirectory = Path.GetDirectoryName(path: AppContext.BaseDirectory);
+            var configFilePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+            var configDirectory = Path.GetDirectoryName(path: configFilePath);
             if (!string.IsNullOrEmpty(configDirectory))
             {
                 Directory.CreateDirectory(path: configDirectory);
             }
-
-            var configFilePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
             var rawJson = File.Exists(configFilePath)
                 ? await File.ReadAllTextAsync(configFilePath)
                 : "{}";

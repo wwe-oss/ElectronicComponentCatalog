@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Services;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModels
@@ -24,6 +25,18 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
             var folder = System.IO.Path.GetDirectoryName(DatabasePath)!;
             Process.Start("explorer.exe", folder);
             await Task.CompletedTask;
+        }
+
+        [RelayCommand]
+        public async Task SaveSettingsAsync()
+        {
+            var path = DatabasePath?.Trim();
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return;
+            }
+
+            DatabasePath = await _config.SaveDatabasePathAsync(path);
         }
     }
 }
