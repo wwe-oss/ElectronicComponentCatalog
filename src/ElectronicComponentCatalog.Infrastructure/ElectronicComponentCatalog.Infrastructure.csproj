@@ -10,4 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElectronicComponentCatalog.Domain\ElectronicComponentCatalog.Domain.csproj" />
+  </ItemGroup>
 </Project>
