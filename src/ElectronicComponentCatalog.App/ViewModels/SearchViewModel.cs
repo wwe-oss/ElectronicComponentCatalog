@@ -11,7 +11,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
     {
         private readonly IComponentRepository _repo;
 
-        [ObservableProperty] private string _query = string.Empty;
+        [ObservableProperty]
+        public partial string Query { get; set; } = string.Empty;
         public ObservableCollection<Component> Results { get; } = new();
 
         public SearchViewModel(IComponentRepository repo) => _repo = repo;
