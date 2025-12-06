@@ -36,5 +36,6 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         }
 
         public async Task LoadAsync() => await SearchAsync();
+        public Task LoadCatalogAsync() => LoadAsync();
     }
 }

@@ -17,7 +17,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         public SearchViewModel(IComponentRepository repo) => _repo = repo;
 
         [RelayCommand]
-        private async Task ExecuteSearchAsync()
+        public async Task ExecuteSearchAsync()
         {
             Results.Clear();
             var found = await _repo.SearchByNameAsync(Query);

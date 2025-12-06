@@ -52,17 +52,21 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
                 return;
             }
 
-            if (!decimal.TryParse(Value.Replace(oldValue: "k", newValue: "000"), result: out var val) || !int.TryParse(s: Quantity, result: out var qty))
+            var valueText = Value.Trim();
+            var normalizedValue = valueText.Replace(oldValue: "k", newValue: "000");
+            if (!decimal.TryParse(normalizedValue, result: out _) || !int.TryParse(s: Quantity, result: out var qty))
             {
                 await _dialog.ShowMessageAsync(title: "Validation", message: "Invalid numeric values.");
                 return;
             }
 
             var category = await _categoryRepo.GetByNameAsync(name: CategoryName) ?? new Category(name: CategoryName, description: "");
-            var spec = new ComponentSpecification(value: val, unit: Unit);
+            var spec = new ComponentSpecification(value: valueText, unit: Unit.Trim());
             var component = new Component(name: Name, commonName: CommonName, category: category, specification: spec, quantityOnHand: qty);
             await _componentRepo.AddAsync(entity: component);
             await _dialog.ShowMessageAsync(title: "Success", message: $"{Name} added successfully.");
         }
+
+        public Task SavePartAsync() => AddAsync();
     }
 }

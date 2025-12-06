@@ -37,13 +37,17 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
                 var parts = line.Split(',', System.StringSplitOptions.TrimEntries);
                 if (parts.Length < 5) continue;
                 var cat = await _categoryRepo.GetByNameAsync(name: parts[2]) ?? new Category(name: parts[2], description: "");
-                if (!decimal.TryParse(parts[3], result: out decimal val) || !int.TryParse(s: parts[5], result: out int qty)) continue;
-                var spec = new ComponentSpecification(value: val, unit: parts[4]);
+                var valueText = parts[3];
+                var normalizedValue = valueText.Replace(oldValue: "k", newValue: "000");
+                if (!decimal.TryParse(normalizedValue, result: out _) || !int.TryParse(s: parts[5], result: out int qty)) continue;
+                var spec = new ComponentSpecification(value: valueText, unit: parts[4]);
                 var c = new Component(name: parts[0], commonName: parts[1], category: cat, specification: spec, quantityOnHand: qty);
                 await _componentRepo.AddAsync(entity: c);
                 count++;
             }
             await _dialog.ShowMessageAsync("Import Complete", $"{count} parts imported.");
         }
+
+        public Task ProcessBulkAddAsync() => ImportAsync();
     }
 }
