@@ -17,7 +17,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         private readonly ICategoryRepository _categoryRepo;
         private readonly DialogService _dialog;
 
-        [ObservableProperty] private string _bulkText = string.Empty;
+        [ObservableProperty]
+        public partial string BulkText { get; set; } = string.Empty;
 
         public BulkAddViewModel(IComponentRepository compRepo, ICategoryRepository catRepo, DialogService dialog)
         {
@@ -29,14 +30,14 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         [RelayCommand]
         private async Task ImportAsync()
         {
-            var lines = _bulkText.Split('\n', System.StringSplitOptions.RemoveEmptyEntries);
+            var lines = BulkText.Split(separator: '\n', options: System.StringSplitOptions.RemoveEmptyEntries);
             int count = 0;
             foreach (var line in lines)
             {
                 var parts = line.Split(',', System.StringSplitOptions.TrimEntries);
                 if (parts.Length < 5) continue;
                 var cat = await _categoryRepo.GetByNameAsync(name: parts[2]) ?? new Category(name: parts[2], description: "");
-                if (!decimal.TryParse(parts[3], result: out decimal val) || !int.TryParse(parts[5], result: out int qty)) continue;
+                if (!decimal.TryParse(parts[3], result: out decimal val) || !int.TryParse(s: parts[5], result: out int qty)) continue;
                 var spec = new ComponentSpecification(value: val, unit: parts[4]);
                 var c = new Component(name: parts[0], commonName: parts[1], category: cat, specification: spec, quantityOnHand: qty);
                 await _componentRepo.AddAsync(entity: c);

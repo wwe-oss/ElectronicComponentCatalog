@@ -18,12 +18,23 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         private readonly ICategoryRepository _categoryRepo;
         private readonly DialogService _dialog;
 
-        [ObservableProperty] private string _name = string.Empty;
-        [ObservableProperty] private string _commonName = string.Empty;
-        [ObservableProperty] private string _categoryName = string.Empty;
-        [ObservableProperty] private string _value = string.Empty;
-        [ObservableProperty] private string _unit = string.Empty;
-        [ObservableProperty] private string _quantity = "0";
+        [ObservableProperty]
+        public partial string Name { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string CommonName { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string CategoryName { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string Value { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string Unit { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string Quantity { get; set; } = "0";
 
         public AddPartViewModel(IComponentRepository compRepo, ICategoryRepository catRepo, DialogService dialog)
         {
