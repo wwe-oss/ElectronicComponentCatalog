@@ -10,12 +10,12 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services
     {
         public async Task ShowMessageAsync(string title, string message)
         {
-            await Application.Current!.MainPage!.DisplayAlert(title, message, "OK");
+            await Application.Current!.MainPage!.DisplayAlertAsync(title, message, "OK");
         }
 
         public async Task<bool> ConfirmAsync(string title, string message)
         {
-            return await Application.Current!.MainPage!.DisplayAlert(title, message, "Yes", "No");
+            return await Application.Current!.MainPage!.DisplayAlertAsync(title, message, "Yes", "No");
         }
     }
 }
