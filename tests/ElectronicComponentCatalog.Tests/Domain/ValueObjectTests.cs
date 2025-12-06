@@ -19,8 +19,12 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Domain
         {
             try
             {
-                var s1 = new ComponentSpecification(4700, "Ohm");
-                var s2 = new ComponentSpecification(4700, "Ohm");
+                /// <summary>
+                /// Todo: Changed value to string with quotes.
+                /// </summary>
+                /// <returns></returns>
+                var s1 = new ComponentSpecification("4700", "Ohm");
+                var s2 = new ComponentSpecification("4700", "Ohm");
 
                 s1.Should().BeEquivalentTo(s2);
                 s1.Unit.Should().Be("Ohm");
@@ -39,7 +43,11 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Domain
         {
             try
             {
-                Action act = () => new ComponentSpecification(-5, "V");
+                /// <summary>
+                /// Todo: Changed value to string with quotes.
+                /// </summary>
+                /// <returns></returns>
+                Action act = () => new ComponentSpecification("-5", "V");
                 act.Should().Throw<ArgumentException>();
                 _helper.Diagnostics.WriteInfo("Negative specification correctly threw exception.");
             }

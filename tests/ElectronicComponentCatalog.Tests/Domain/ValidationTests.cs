@@ -15,7 +15,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Domain
             Action act = () => new Component
             {
                 Name = null!,
-                Specification = new ComponentSpecification("10k", "Ohm"),
+                Specification = new ComponentSpecification(value: "10k", unit: "Ohm"),
                 QuantityOnHand = 5
             };
 

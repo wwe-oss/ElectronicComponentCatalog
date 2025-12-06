@@ -15,7 +15,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         public SettingsViewModel(ConfigurationService config)
         {
             _config = config;
-            DatabasePath = _config.GetConnectionString().Replace("Data Source=", "");
+            DatabasePath = _config.GetConnectionString().Replace(oldValue: "Data Source=", newValue: "");
         }
 
         [RelayCommand]

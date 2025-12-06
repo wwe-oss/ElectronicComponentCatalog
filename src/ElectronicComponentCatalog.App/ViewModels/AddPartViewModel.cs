@@ -35,23 +35,23 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModel
         [RelayCommand]
         private async Task AddAsync()
         {
-            if (!ValidationHelper.HasValues(Name, CommonName, CategoryName, Value, Unit))
+            if (!ValidationHelper.HasValues( Name, CommonName, CategoryName, Value, Unit))
             {
-                await _dialog.ShowMessageAsync("Validation", "Please fill in all fields.");
+                await _dialog.ShowMessageAsync(title: "Validation", message: "Please fill in all fields.");
                 return;
             }
 
-            if (!decimal.TryParse(Value.Replace("k", "000"), out var val) || !int.TryParse(Quantity, out var qty))
+            if (!decimal.TryParse(Value.Replace(oldValue: "k", newValue: "000"), result: out var val) || !int.TryParse(s: Quantity, result: out var qty))
             {
-                await _dialog.ShowMessageAsync("Validation", "Invalid numeric values.");
+                await _dialog.ShowMessageAsync(title: "Validation", message: "Invalid numeric values.");
                 return;
             }
 
-            var category = await _categoryRepo.GetByNameAsync(CategoryName) ?? new Category(CategoryName, "");
-            var spec = new ComponentSpecification(val, Unit);
-            var component = new Component(Name, CommonName, category, spec, qty);
-            await _componentRepo.AddAsync(component);
-            await _dialog.ShowMessageAsync("Success", $"{Name} added successfully.");
+            var category = await _categoryRepo.GetByNameAsync(name: CategoryName) ?? new Category(name: CategoryName, description: "");
+            var spec = new ComponentSpecification(value: val, unit: Unit);
+            var component = new Component(name: Name, commonName: CommonName, category: category, specification: spec, quantityOnHand: qty);
+            await _componentRepo.AddAsync(entity: component);
+            await _dialog.ShowMessageAsync(title: "Success", message: $"{Name} added successfully.");
         }
     }
 }

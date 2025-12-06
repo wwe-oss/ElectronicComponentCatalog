@@ -14,17 +14,17 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructur
         public ConfigurationService()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                .SetBasePath(basePath: AppContext.BaseDirectory)
+                .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true);
             _configuration = builder.Build();
         }
 
         public string GetConnectionString()
         {
-            var relativePath = _configuration["Database:Path"] ?? "Data/database/catalog.db";
-            var fullPath = Path.GetFullPath(relativePath);
-            var dir = Path.GetDirectoryName(fullPath);
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir!);
+            var relativePath = _configuration[key: "Database:Path"] ?? "Data/database/catalog.db";
+            var fullPath = Path.GetFullPath(path: relativePath);
+            var dir = Path.GetDirectoryName(path: fullPath);
+            if (!Directory.Exists(path: dir)) Directory.CreateDirectory(path: dir!);
             return $"Data Source={fullPath}";
         }
     }

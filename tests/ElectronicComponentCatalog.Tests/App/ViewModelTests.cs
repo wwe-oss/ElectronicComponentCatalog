@@ -5,6 +5,7 @@ using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Entities;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.ValueObjects;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Utilities;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Interfaces;
 using Xunit.Abstractions;
 using System.Threading.Tasks;
 using System;
