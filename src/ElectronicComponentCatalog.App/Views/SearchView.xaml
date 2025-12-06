@@ -6,7 +6,7 @@
     <StackLayout Padding="20">
         <Label Text="Search Components"
                FontAttributes="Bold"
-               FontSize="18">
+               FontSize="18" />
         <SearchBar Placeholder="Enter filter text..."
                    Text="{Binding Query}"
                    SearchCommand="{Binding ExecuteSearchCommand}"/>

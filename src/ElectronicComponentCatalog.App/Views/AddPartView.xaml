@@ -4,26 +4,15 @@
              x:Class="BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views.AddPartView"
              x:DataType="vm:AddPartViewModel">
     <ScrollView>
-        <StackLayout Padding="20"
-                     Spacing="10">
-            <Label Text="Add New Component"
-                   FontAttributes="Bold"
-                   FontSize="18">
-            <Entry Placeholder="Name"
-                   Text="{Binding Name}">
-            <Entry Placeholder="Common Name"
-                   Text="{Binding CommonName}">
-            <Entry Placeholder="Category"
-                   Text="{Binding CategoryName}">
-            <Entry Placeholder="Value (e.g. 10k)"
-                   Text="{Binding Value}">
-            <Entry Placeholder="Unit (e.g. Ohm)"
-                   Text="{Binding Unit}">
-            <Entry Placeholder="Quantity"
-                   Text="{Binding Quantity}"
-                   Keyboard="Numeric">
-            <Button Text="Add Component"
-                    Command="{Binding AddCommand}">
+        <StackLayout Padding="20" Spacing="10">
+            <Label Text="Add New Component" FontAttributes="Bold" FontSize="18" />
+            <Entry Placeholder="Name" Text="{Binding Name}" />
+            <Entry Placeholder="Common Name" Text="{Binding CommonName}" />
+            <Entry Placeholder="Category" Text="{Binding CategoryName}" />
+            <Entry Placeholder="Value (e.g. 10k)" Text="{Binding Value}" />
+            <Entry Placeholder="Unit (e.g. Ohm)" Text="{Binding Unit}" />
+            <Entry Placeholder="Quantity" Text="{Binding Quantity}" Keyboard="Numeric" />
+            <Button Text="Add Component" Command="{Binding AddCommand}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

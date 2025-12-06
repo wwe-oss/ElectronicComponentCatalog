@@ -6,11 +6,11 @@
     <StackLayout Padding="20">
         <Label Text="Settings"
                FontAttributes="Bold"
-               FontSize="18">
-        <Label Text="Database Path:">
+               FontSize="18" />
+        <Label Text="Database Path:" />
         <Entry Text="{Binding DatabasePath}"
-               IsReadOnly="True">
+               IsReadOnly="True" />
         <Button Text="Open Folder"
-                Command="{Binding OpenFolderCommand}">
+                Command="{Binding OpenFolderCommand}" />
     </StackLayout>
 </ContentPage>

@@ -20,11 +20,11 @@
                            BorderColor="{StaticResource SecondaryAccentColor}">
                         <StackLayout>
                             <Label Text="{Binding Name}"
-                                   FontAttributes="Bold">
+                                   FontAttributes="Bold" />
                             <Label Text="{Binding Category.Name}"
-                                   FontSize="12">
+                                   FontSize="12" />
                             <Label Text="{Binding QuantityOnHand, StringFormat='Qty: {0}'}"
-                                   FontSize="12">
+                                   FontSize="12" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>

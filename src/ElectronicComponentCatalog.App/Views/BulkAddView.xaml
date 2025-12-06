@@ -4,13 +4,8 @@
              x:Class="BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views.BulkAddView"
              x:DataType="vm:BulkAddViewModel">
     <StackLayout Padding="20">
-        <Label Text="Bulk Add Components"
-               FontAttributes="Bold"
-               FontSize="18">
-        <Editor Placeholder="Paste multiple part lines here..."
-                Text="{Binding BulkText}"
-                HeightRequest="200">
-        <Button Text="Import Parts"
-                Command="{Binding ImportCommand}">
+        <Label Text="Bulk Add Components" FontAttributes="Bold" FontSize="18" />
+        <Editor Placeholder="Paste multiple part lines here..." Text="{Binding BulkText}" HeightRequest="200" />
+        <Button Text="Import Parts" Command="{Binding ImportCommand}" />
     </StackLayout>
 </ContentPage>
