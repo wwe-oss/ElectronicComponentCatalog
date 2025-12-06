@@ -18,9 +18,10 @@ public partial class App : MauiWinUIApplication
 	/// </summary>
 	public App()
 	{
-		this.InitializeComponent();
+		global::Microsoft.UI.Xaml.Application.LoadComponent(this, new global::System.Uri("ms-appx:///Platforms/Windows/App.xaml"));
 	}
 
     protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+
 }
 
