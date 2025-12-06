@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Helpers
 {
-    /// <summary>
-    /// Static helper for performing navigation from any context.
-    /// </summary>
     public static class NavigationHelper
     {
         private static NavigationService? _navService;

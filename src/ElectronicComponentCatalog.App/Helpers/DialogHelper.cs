@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Helpers
 {
-    /// <summary>
-    /// Static helper wrapper for simplified dialog usage.
-    /// </summary>
     public static class DialogHelper
     {
         private static DialogService? _dialogService;
