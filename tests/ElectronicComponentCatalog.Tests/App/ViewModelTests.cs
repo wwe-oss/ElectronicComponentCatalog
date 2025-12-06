@@ -5,7 +5,7 @@ using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Entities;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.ValueObjects;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Utilities;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services;
-using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Interfaces;
+using DomainInterfaces = global::BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Interfaces;
 using Xunit.Abstractions;
 using System.Threading.Tasks;
 using System;
@@ -29,8 +29,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.App
         {
             try
             {
-                var compRepo = _helper.Resolve<Domain.Interfaces.IComponentRepository>();
-                var catRepo = _helper.Resolve<Domain.Interfaces.ICategoryRepository>();
+                var compRepo = _helper.Resolve<DomainInterfaces.IComponentRepository>();
+                var catRepo = _helper.Resolve<DomainInterfaces.ICategoryRepository>();
                 var vm = new AddPartViewModel(compRepo, catRepo, _dialog)
                 {
                     Name = "TestResistor",
@@ -57,8 +57,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.App
         {
             try
             {
-                var compRepo = _helper.Resolve<Domain.Interfaces.IComponentRepository>();
-                var catRepo = _helper.Resolve<Domain.Interfaces.ICategoryRepository>();
+                var compRepo = _helper.Resolve<DomainInterfaces.IComponentRepository>();
+                var catRepo = _helper.Resolve<DomainInterfaces.ICategoryRepository>();
                 var vm = new AddPartViewModel(compRepo, catRepo, _dialog)
                 {
                     Name = "",
@@ -85,7 +85,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.App
         {
             try
             {
-                var repo = _helper.Resolve<Domain.Interfaces.IComponentRepository>();
+                var repo = _helper.Resolve<DomainInterfaces.IComponentRepository>();
                 var vm = new SearchViewModel(repo) { Query = "Resistor" };
 
                 await vm.ExecuteSearchCommand.ExecuteAsync(null);
