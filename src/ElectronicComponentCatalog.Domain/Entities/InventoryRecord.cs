@@ -10,7 +10,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Entiti
         public Guid Id { get; private set; } = Guid.NewGuid();
         public Guid ComponentId { get; private set; }
         public int QuantityChange { get; private set; }
-        public DateTime Timestamp { get; private set; } = DateTime.UtcNow;
+        public DateTime LastUpdated { get; private set; } = DateTime.UtcNow;
         public string? Reason { get; private set; }
         
 
