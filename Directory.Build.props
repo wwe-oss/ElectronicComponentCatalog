@@ -1,0 +1,54 @@
+<Project>
+    <PropertyGroup>
+        <!-- Target Framework -->
+        <TargetFramework>
+            net10.0
+        </TargetFramework>
+        <!-- Language & Build Settings -->
+        <Nullable>
+            enable
+        </Nullable>
+        <ImplicitUsings>
+            enable
+        </ImplicitUsings>
+        <LangVersion>
+            preview
+        </LangVersion>
+        <!-- Metadata -->
+        <Company>
+            BrokenBrainSoftware
+        </Company>
+        <Product>
+            ElectronicComponentCatalog
+        </Product>
+        <Authors>
+            Wayne
+        </Authors>
+        <RepositoryUrl>
+            https://github.com/YourRepoHere/ElectronicComponentCatalog
+        </RepositoryUrl>
+        <!-- Build Directories -->
+        <BaseOutputPath>
+            $(MSBuildThisFileDirectory)build\bin\
+        </BaseOutputPath>
+        <BaseIntermediateOutputPath>
+            $(MSBuildThisFileDirectory)build\obj\
+        </BaseIntermediateOutputPath>
+        <!-- Diagnostics -->
+        <TreatWarningsAsErrors>
+            false
+        </TreatWarningsAsErrors>
+        <AnalysisLevel>
+            latest
+        </AnalysisLevel>
+        <CheckForOverflowUnderflow>
+            false
+        </CheckForOverflowUnderflow>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- Shared analyzers -->
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers"
+                          Version="10.0.0"
+                          PrivateAssets="all"/>
+    </ItemGroup>
+</Project>  

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Dark-theme palette -->
+    <Color x:Key="BackgroundColor">
+        #121212
+    </Color>
+    <Color x:Key="SurfaceColor">
+        #1E1E1E
+    </Color>
+    <Color x:Key="TextPrimaryColor">
+        #FFFFFF
+    </Color>
+    <Color x:Key="TextSecondaryColor">
+        #B3B3B3
+    </Color>
+    <Color x:Key="DividerColor">
+        #333333
+    </Color>
+    <SolidColorBrush x:Key="BackgroundBrush"
+                     Color="{StaticResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="SurfaceBrush"
+                     Color="{StaticResource SurfaceColor}"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush"
+                     Color="{StaticResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush"
+                     Color="{StaticResource TextSecondaryColor}"/>
+    <SolidColorBrush x:Key="DividerBrush"
+                     Color="{StaticResource DividerColor}"/>
+</ResourceDictionary>

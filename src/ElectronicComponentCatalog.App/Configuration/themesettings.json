@@ -1,0 +1,10 @@
+{
+  "Theme": {
+    "Mode": "Dark",
+    "PrimaryColor": "#512BD4",
+    "AccentColor": "#03DAC6",
+    "Surface": "#1E1E1E",
+    "TextPrimary": "#FFFFFF",
+    "TextSecondary": "#B3B3B3"
+  }
+}
