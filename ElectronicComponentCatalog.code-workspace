@@ -20,6 +20,14 @@
 	"settings": {
 		"dotnet.defaultSolution": "ElectronicComponentCatalog.sln",
 		"powershell.cwd": "ECC Workspace",
+		"telemetry.editStats.enabled": false,
+		"dotnetAcquisitionExtension.enableTelemetry": false,
+		"docker-explorer.enableTelemetry": false,
+		"database-client.telemetry.usesOnlineServices": false,
+		"gitlens.telemetry.enabled": false,
+		"docker.lsp.telemetry": "off",
+		"mdb.sendTelemetry": false,
+		"code-runner.enableAppInsights": false,
 		
 	}
 }
