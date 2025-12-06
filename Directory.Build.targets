@@ -1,33 +1,52 @@
 <Project>
-    <!-- Post-build: copy runtime assets -->
-    <Target Name="CopyRuntimeAssets" AfterTargets="Build">
-        <Message Text="Copying runtime assets to output..." Importance="high"/>
+    <!-- Post-build: copy runtime assets for App project only -->
+    <Target Name="CopyRuntimeAssets"
+            AfterTargets="Build"
+            Condition="'$(MSBuildProjectName)' == 'ElectronicComponentCatalog.App'">
+        <Message Text="Copying runtime assets to output..."
+                 Importance="high"/>
         <!-- Copy App Configurations -->
-        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\appsettings.json" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true"/>
-        <Copy SourceFiles="src\ElectronicComponentCatalog.App\Configuration\themesettings.json" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true"/>
-        <!-- Copy SQLite Database -->
         <ItemGroup>
-            <_Database Include="Data\Database\catalog.db"/>
+            <_AppConfigs Include="$(MSBuildProjectDirectory)\Configuration\appsettings.json"
+                         Condition="Exists('%(FullPath)')"/>
+            <_ThemeConfigs Include="$(MSBuildProjectDirectory)\Configuration\themesettings.json"
+                           Condition="Exists('%(FullPath)')"/>
+            <_Database Include="$(MSBuildProjectDirectory)\Data\Database\catalog.db"
+                       Condition="Exists('%(FullPath)')"/>
         </ItemGroup>
-        <Copy SourceFiles="@(_Database)" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')"/>
+        <Copy SourceFiles="@(_AppConfigs)"
+              DestinationFolder="$(OutputPath)"
+              SkipUnchangedFiles="true"/>
+        <Copy SourceFiles="@(_ThemeConfigs)"
+              DestinationFolder="$(OutputPath)"
+              SkipUnchangedFiles="true"/>
+        <Copy SourceFiles="@(_Database)"
+              DestinationFolder="$(OutputPath)"
+              SkipUnchangedFiles="true"/>
     </Target>
     <!-- Optional: enforce editorconfig compliance -->
-    <Target Name="EnforceCodeStyle" BeforeTargets="Build">
-        <Message Text="Applying .editorconfig rules..." Importance="low"/>
+    <Target Name="EnforceCodeStyle"
+            BeforeTargets="Build">
+        <Message Text="Applying .editorconfig rules..."
+                 Importance="low"/>
     </Target>
     <!-- Make sure MSBuild always runs restore -->
-    <Target Name="EnsureRestore"  BeforeTargets="Build">
-        <MSBuild Projects="$(MSBuildProjectFile)" Targets="Restore"/>
+    <Target Name="EnsureRestore"
+            BeforeTargets="Build">
+        <MSBuild Projects="$(MSBuildProjectFile)"
+                 Targets="Restore"/>
     </Target>
-    <Target Name="CopyAppConfig" AfterTargets="Build">
+    <!-- AppConfig copier (harmless for others) -->
+    <Target Name="CopyAppConfig"
+            AfterTargets="Build"
+            Condition="'$(MSBuildProjectName)' == 'ElectronicComponentCatalog.App'">
         <ItemGroup>
-            <!-- <_AppConfigFiles Include="src\ElectronicComponentCatalog.App\Configuration\appsettings*.json"
-                            Condition="Exists('%(FullPath)')"/> -->
-            <_AppConfigFiles Include="Configuration\appsettings*.json" />
+            <_AppConfigFiles Include="$(MSBuildProjectDirectory)\Configuration\appsettings*.json"
+                             Condition="Exists('%(FullPath)')"/>
         </ItemGroup>
         <Copy SourceFiles="@(_AppConfigFiles)"
-            DestinationFolder="$(OutputPath)"
-            SkipUnchangedFiles="true"
-            Condition="@( _AppConfigFiles ) != ''"/>
-    </Target>      
+              DestinationFolder="$(OutputPath)"
+              SkipUnchangedFiles="true"
+              Condition="'@(_AppConfigFiles)' != ''"/>
+    </Target>
 </Project>  
