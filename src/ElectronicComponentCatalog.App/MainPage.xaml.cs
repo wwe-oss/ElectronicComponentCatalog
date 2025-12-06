@@ -1,23 +1,22 @@
-﻿namespace ElectronicComponentCatalog.App;
+﻿using Microsoft.Maui.Controls;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModels;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services;
 
-public partial class MainPage : ContentPage
+namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views
 {
-	int count = 0;
-
-	public MainPage()
+	/// <summary>
+	/// Main shell of the application with sidebar navigation.
+	/// </summary>
+	public partial class MainPage : ContentPage
 	{
-		InitializeComponent();
-	}
+		private readonly NavigationService _navigationService;
 
-	private void OnCounterClicked(object? sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		public MainPage(MainViewModel viewModel, NavigationService navigationService)
+		{
+			InitializeComponent();
+			BindingContext = viewModel;
+			_navigationService = navigationService;
+			_navigationService.SetContentRegion(ContentRegion);
+		}
 	}
 }

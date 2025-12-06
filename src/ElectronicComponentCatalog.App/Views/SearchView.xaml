@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModels"
+             x:Class="BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views.SearchView"
+             x:DataType="vm:SearchViewModel">
+    <StackLayout Padding="20">
+        <Label Text="Search Components"
+               FontAttributes="Bold"
+               FontSize="18">
+        <SearchBar Placeholder="Enter filter text..."
+                   Text="{Binding Query}"
+                   SearchCommand="{Binding ExecuteSearchCommand}"/>
+        <CollectionView ItemsSource="{Binding Results}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
