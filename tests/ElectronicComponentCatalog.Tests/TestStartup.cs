@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Logging;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Data;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Repositories;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Services;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Interfaces;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModels;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests
 {
@@ -31,7 +33,17 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IInventoryService, InventoryRepository>();
             services.AddSingleton<ConfigurationService>();
-            services.AddLogging(builder => builder.AddProvider(NullLoggerProvider.Instance));
+
+            services.AddSingleton<DialogService>();
+            services.AddSingleton<NavigationService>();
+            services.AddSingleton<MainViewModel>();
+            services.AddTransient<CatalogViewModel>();
+            services.AddTransient<AddPartViewModel>();
+            services.AddTransient<BulkAddViewModel>();
+            services.AddTransient<SearchViewModel>();
+            services.AddTransient<SettingsViewModel>();
+
+            services.AddLogging();
 
             return services.BuildServiceProvider();
         }

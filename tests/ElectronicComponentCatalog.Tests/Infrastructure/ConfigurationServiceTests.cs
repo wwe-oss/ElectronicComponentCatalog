@@ -4,7 +4,7 @@ using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Infrastructure.Se
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Utilities;
 using Xunit.Abstractions;
 using System;
-using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Infrastructure
 {
@@ -15,41 +15,39 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Infrast
         public ConfigurationServiceTests(ITestOutputHelper output) => _helper = new TestHelper(output);
 
         [Fact(DisplayName = "ConfigurationService loads connection string successfully")]
-        [Trait("Category", "Infrastructure")]
+        [Trait(name: "Category", value: "Infrastructure")]
         public void ConfigurationService_LoadsConfig()
         {
             try
             {
-                var config = _helper.Resolve<IConfiguration>();
-                var service = new ConfigurationService(config);
+                var service = _helper.Resolve<ConfigurationService>();
 
                 var conn = service.GetConnectionString();
-                conn.Should().Contain("Data");
-                _helper.Diagnostics.WriteInfo($"Connection string resolved: {conn}");
+                conn.Should().Contain(expected: "Data");
+                _helper.Diagnostics.WriteInfo(message: $"Connection string resolved: {conn}");
             }
             catch (Exception ex)
             {
-                _helper.Diagnostics.WriteDiagnostic(nameof(ConfigurationService_LoadsConfig), ex);
+                _helper.Diagnostics.WriteDiagnostic(testName: nameof(ConfigurationService_LoadsConfig), ex);
                 throw;
             }
         }
 
         [Fact(DisplayName = "ConfigurationService handles missing configuration gracefully")]
-        [Trait("Category", "Infrastructure")]
+        [Trait(name: "Category", value: "Infrastructure")]
         public void ConfigurationService_MissingConfig_GracefulFail()
         {
             try
             {
-                var fakeConfig = new ConfigurationBuilder().AddInMemoryCollection().Build();
-                var service = new ConfigurationService(fakeConfig);
-
-                Action act = () => service.GetConnectionString();
-                act.Should().NotThrow();
-                _helper.Diagnostics.WriteInfo("Missing configuration handled without exception.");
+                var service = _helper.Resolve<ConfigurationService>();
+                var tempPath = Path.Combine(Path.GetTempPath(), $"test-db-{Guid.NewGuid()}.db");
+                Func<Task> act = async () => await service.SaveDatabasePathAsync(databasePath: tempPath);
+                act.Should().NotThrowAsync();
+                _helper.Diagnostics.WriteInfo(message: "Missing configuration handled without exception.");
             }
             catch (Exception ex)
             {
-                _helper.Diagnostics.WriteDiagnostic(nameof(ConfigurationService_MissingConfig_GracefulFail), ex);
+                _helper.Diagnostics.WriteDiagnostic(testName: nameof(ConfigurationService_MissingConfig_GracefulFail), ex);
                 throw;
             }
         }

@@ -15,10 +15,43 @@
 		{
 			"name": "ECC Workspace",
 			"path": "."
+		},
+		{
+			"name": "ElectronicComponentCatalog",
+			"path": "."
 		}
 	],
 	"settings": {
 		"dotnet.defaultSolution": "ElectronicComponentCatalog.sln",
+		"powershell.cwd": "ECC Workspace",
+		"telemetry.editStats.enabled": false,
+		"dotnetAcquisitionExtension.enableTelemetry": false,
+		"docker-explorer.enableTelemetry": false,
+		"database-client.telemetry.usesOnlineServices": false,
+		"gitlens.telemetry.enabled": false,
+		"docker.lsp.telemetry": "off",
+		"mdb.sendTelemetry": false,
+		"code-runner.enableAppInsights": false,
 		
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "build",
+				"type": "shell",
+				"command": "msbuild",
+				"args": [
+					"/property:GenerateFullPaths=true",
+					"/t:build",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"group": "build",
+				"presentation": {
+					"reveal": "silent"
+				},
+				"problemMatcher": "$msCompile"
+			}
+		]
 	}
 }

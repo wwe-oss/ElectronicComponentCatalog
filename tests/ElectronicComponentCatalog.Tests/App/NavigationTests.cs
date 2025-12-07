@@ -1,6 +1,7 @@
 using Xunit;
 using FluentAssertions;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services;
+using Microsoft.Maui.Controls;
 using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Utilities;
 using Xunit.Abstractions;
 using System.Threading.Tasks;
@@ -23,7 +24,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.App
         {
             try
             {
-                var nav = new NavigationService();
+                var nav = new NavigationService(_helper.Services);
+                nav.SetContentRegion(new ContentView());
                 await nav.NavigateToAsync("CatalogView");
                 _helper.Diagnostics.WriteInfo("NavigationService successfully navigated to CatalogView.");
             }
@@ -40,7 +42,8 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.App
         {
             try
             {
-                var nav = new NavigationService();
+                var nav = new NavigationService(_helper.Services);
+                nav.SetContentRegion(new ContentView());
                 await nav.NavigateToAsync("InvalidViewName");
             }
             catch (Exception ex)

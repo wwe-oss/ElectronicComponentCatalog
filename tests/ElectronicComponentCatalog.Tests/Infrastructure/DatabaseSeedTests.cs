@@ -23,46 +23,38 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Tests.Infrast
         }
 
         [Fact(DisplayName = "Database seeding inserts sample data")]
-        [Trait("Category", "Infrastructure")]
+        [Trait(name: "Category", value: "Infrastructure")]
         public async Task Database_Seeding_Success()
         {
             try
             {
-                var cat = new Category("Diodes", "Rectifiers");
-                var spec = new ComponentSpecification(1, "N4007");
-                var comp = new Component("1N4007", "Diode", cat, spec, 200);
+                var cat = new Category(name: "Diodes", description: "Rectifiers");
+                var spec = new ComponentSpecification(value: "1", unit: "N4007");
+                var comp = new Component(name: "1N4007", commonName: "Diode", category: cat, specification: spec, quantityOnHand: 200);
 
                 _context.Components.Add(comp);
                 await _context.SaveChangesAsync();
 
                 var total = await _context.Components.CountAsync();
-                total.Should().BeGreaterThan(0);
+                total.Should().BeGreaterThan(expected: 0);
 
-                _helper.Diagnostics.WriteInfo($"Database seeding verified. Total records: {total}");
+                _helper.Diagnostics.WriteInfo(message: $"Database seeding verified. Total records: {total}");
             }
             catch (Exception ex)
             {
-                _helper.Diagnostics.WriteDiagnostic(nameof(Database_Seeding_Success), ex);
+                _helper.Diagnostics.WriteDiagnostic(testName: nameof(Database_Seeding_Success), ex: ex);
                 throw;
             }
         }
 
         [Fact(DisplayName = "Database handles failure gracefully during seeding")]
-        [Trait("Category", "Infrastructure")]
-        public async Task Database_Seeding_Failure_Graceful()
+        [Trait(name: "Category", value: "Infrastructure")]
+        public void Database_Seeding_Failure_Graceful()
         {
-            try
-            {
-                var invalidComp = new Component("Invalid", "Res", null!, null!, -1);
-                await _context.AddAsync(invalidComp);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                _helper.Diagnostics.WriteDiagnostic(nameof(Database_Seeding_Failure_Graceful), ex);
-                ex.Should().BeOfType<InvalidOperationException>()
-                    .Or.BeOfType<DbUpdateException>();
-            }
+            var invalidCat = new Category(name: "Invalid", description: "Invalid");
+            var invalidSpec = new ComponentSpecification(value: "10", unit: "Ohm");
+            Action act = () => new Component(name: "Invalid", commonName: "Res", category: invalidCat, specification: invalidSpec, quantityOnHand: -1);
+            act.Should().Throw<ArgumentOutOfRangeException>();
         }
     }
 }

@@ -9,15 +9,16 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.Domain.Entiti
     {
         public Guid Id { get; private set; } = Guid.NewGuid();
         public Guid ComponentId { get; private set; }
-        public int QuantityChange { get; private set; }
+        public int Count { get; private set; }
+        public Component Component { get; private set; } = null!;
         public DateTime LastUpdated { get; private set; } = DateTime.UtcNow;
         public string? Reason { get; private set; }
         
 
-        public InventoryRecord(Guid componentId, int quantityChange, string? reason = null)
+        public InventoryRecord(Guid componentId, int count, string? reason = null)
         {
             ComponentId = componentId;
-            QuantityChange = quantityChange;
+            Count = count;
             Reason = reason;
         }
     }
