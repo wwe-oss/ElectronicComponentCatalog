@@ -2,7 +2,7 @@
 <Project>
     <PropertyGroup>
         <!-- Target Framework -->
-        <TargetFramewor>net10.0-windows10.0.19041.0</TargetFramewor>
+        <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
         <!-- Language & Build Settings -->
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>

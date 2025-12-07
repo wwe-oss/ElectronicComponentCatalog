@@ -1,2 +1,2 @@
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "ElectronicComponentCatalog.App")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "ElectronicComponentCatalog.App.Pages")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.MauiApp")]

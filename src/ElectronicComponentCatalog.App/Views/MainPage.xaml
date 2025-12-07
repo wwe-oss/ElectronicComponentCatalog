@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.ViewModels"
              x:Class="BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views.MainPage"
-             x:DataType="vm:MainViewModel"
+             x:DataType="vm:BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.MainiewModel"
              Title="Electronic Component Catalog">
     <Grid RowDefinitions="Auto,*"
           ColumnDefinitions="200,*">

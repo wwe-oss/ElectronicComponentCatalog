@@ -15,10 +15,6 @@
 		{
 			"name": "ECC Workspace",
 			"path": "."
-		},
-		{
-			"name": "ElectronicComponentCatalog",
-			"path": "."
 		}
 	],
 	"settings": {
@@ -32,6 +28,8 @@
 		"docker.lsp.telemetry": "off",
 		"mdb.sendTelemetry": false,
 		"code-runner.enableAppInsights": false,
+		"workbench.editor.enablePreviewFromCodeNavigation": true,
+		"workbench.editor.enablePreviewFromQuickOpen": true,
 		
 	},
 	"tasks": {
@@ -50,7 +48,7 @@
 				"presentation": {
 					"reveal": "silent"
 				},
-				"problemMatcher": "$msCompile"
+				"problemMatcher": "$gcc"
 			}
 		]
 	}

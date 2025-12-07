@@ -6,11 +6,9 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(MainViewModel viewModel)
+        public MainPage()
         {
             InitializeComponent();
-            ArgumentNullException.ThrowIfNull(viewModel);
-            BindingContext = viewModel;
         }
     }
 }

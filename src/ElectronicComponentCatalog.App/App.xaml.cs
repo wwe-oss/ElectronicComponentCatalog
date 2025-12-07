@@ -1,8 +1,9 @@
-﻿using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
+using BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Views;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+
 using System;
 
 namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App

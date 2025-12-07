@@ -39,5 +39,7 @@ namespace BrokenBrainSoftware.Utilities.ElectronicComponentCatalog.App.Services
             _contentRegion.Content = page.Content;
             await Task.CompletedTask;
         }
+
+        internal void SetContentRegion(object region) => throw new NotImplementedException();
     }
 }
